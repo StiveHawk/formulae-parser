@@ -1,4 +1,5 @@
-﻿using FormulaeParser.Parser;
+﻿using FormulaeParser.Flat;
+using FormulaeParser.Parser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,24 @@ namespace FormulaeParser.Components
             return true;
         }
 
+        public IEnumerable<IComponent> ListAllNonBlockChild()
+        {
+            foreach(var component in Components)
+            {
+                if (component is Block)
+                {
+                    var block = (Block)component;
+
+                    foreach (var child in block.ListAllNonBlockChild())
+                        yield return child;
+                }
+                else
+                {
+                    yield return component;
+                }
+            }
+        }
+
         private Block AddChildBlock()
         {
             Block block = new Block();
@@ -47,9 +66,17 @@ namespace FormulaeParser.Components
 
         public Block Flatten()
         {
+            return Flatten(FlatPatternLibrary.Default());
+        }
+
+        public Block Flatten(FlatPatternLibrary library)
+        {
             if (Components.Count == 1)
                 if (Components[0] is Block)
-                    return ((Block)Components[0]).Flatten();
+                    return ((Block)Components[0]).Flatten(library);
+            
+            if(library != null)
+                return library.Flatten(this);
 
             return this;
         }

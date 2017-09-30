@@ -9,7 +9,7 @@ namespace FormulaeParser.Components
     public class Operation : IComponent
     {
         public string Symbol;
-
+        
         public Operation(string symbol)
         {
             this.Symbol = symbol;

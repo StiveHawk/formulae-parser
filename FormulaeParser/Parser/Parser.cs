@@ -55,6 +55,8 @@ namespace FormulaeParser.Parser
                     new BlockPattern(),
 
                     new BlockPattern() { StartPattern = "Sqrt".ToCharArray() },
+                    new BlockPattern() { EndPattern = "?".ToCharArray() },
+                    new BlockPattern() { EndPattern = "!".ToCharArray() },
 
                     new CharPattern("+"),
                     new CharPattern("-"),

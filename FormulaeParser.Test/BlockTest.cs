@@ -179,7 +179,7 @@ namespace FormulaeParser.Test
         [TestMethod]
         public void BlockFlatten_Deepness0()
         {
-            var b = Block.Parse("11").Flatten();
+            var b = Block.Parse("11").Flatten(null);
 
             Assert.AreEqual(b.Components[0] is Number, true);
         }
@@ -187,7 +187,7 @@ namespace FormulaeParser.Test
         [TestMethod]
         public void BlockFlatten_Deepness1()
         {
-            var b = Block.Parse("(11)").Flatten();
+            var b = Block.Parse("(11)").Flatten(null);
 
             Assert.AreEqual(b.Components[0] is Number, true);
         }
@@ -195,7 +195,7 @@ namespace FormulaeParser.Test
         [TestMethod]
         public void BlockFlatten_Deepness2()
         {
-            var b = Block.Parse("((11))").Flatten();
+            var b = Block.Parse("((11))").Flatten(null);
 
             Assert.AreEqual(b.Components[0] is Number, true);
         }
@@ -203,7 +203,7 @@ namespace FormulaeParser.Test
         [TestMethod]
         public void BlockFlatten_Formulae()
         {
-            var b = Block.Parse("(((1+1)/(2+2)))").Flatten();
+            var b = Block.Parse("(((1+1)/(2+2)))").Flatten(null);
 
             Assert.AreEqual(b.Components[0] is Block, true);
             Assert.AreEqual(b.Components[1] is Operation, true);

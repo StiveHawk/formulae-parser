@@ -44,14 +44,20 @@
     <Compile Include="Components\IComponent.cs" />
     <Compile Include="Components\Number.cs" />
     <Compile Include="Components\Operation.cs" />
+    <Compile Include="Flat\FlatPattern.cs" />
+    <Compile Include="Flat\IFlatPattern.cs" />
+    <Compile Include="Flat\Patterns\MatchLibrary.cs" />
+    <Compile Include="Flat\Patterns\UnifySum.cs" />
     <Compile Include="Parser\BlockPattern.cs" />
     <Compile Include="Parser\CharPattern.cs" />
+    <Compile Include="Flat\FlatPatternLibrary.cs" />
     <Compile Include="Parser\IPattern.cs" />
     <Compile Include="Parser\NumberPattern.cs" />
     <Compile Include="Parser\Parser.cs" />
     <Compile Include="Parser\PatternResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
